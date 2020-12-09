@@ -1,0 +1,33 @@
+{
+  "name": "advent-of-ocde",
+  "version": "1.0.0",
+  "description": "Advent of Code",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint src --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silviuburceadev/AoC.git"
+  },
+  "keywords": [],
+  "author": "Silviu Burcea (silviuburceadev@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/silviuburceadev/AoC/issues"
+  },
+  "homepage": "https://github.com/silviuburceadev/AoC#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.11",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {}
+}

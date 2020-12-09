@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    // TODO SB enable @typescript-eslint recommendations once we start typing our codebase
+    //    "plugin:@typescript-eslint/eslint-recommended",
+    //    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "printWidth": 120
+      }
+    ],
+    "no-var": "error",
+    "prefer-const": "error"
+  },
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  }
+}
