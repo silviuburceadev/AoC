@@ -3,33 +3,29 @@ import * as util from "util";
 
 const readFile = util.promisify(fs.readFile);
 
-const sumOfTwo = (numbers: number[], target: number) => {
-  for (let i = 0; i < numbers.length; i++) {
-    const missingNumber = target - numbers[i];
-    if (numbers.indexOf(missingNumber, i) > -1) {
-      return [numbers[i], missingNumber];
+// Overloading in TS is difficult
+const _find = (numbers: number[], from: number, howMany: number, howMuch: number): number[] => {
+  if (howMany === 1) {
+    return [numbers.indexOf(howMuch)];
+  }
+  for (let i = from; i < numbers.length; i++) {
+    const indexes = _find(numbers, i + 1, howMany - 1, howMuch - numbers[i]);
+    if (indexes.indexOf(-1) === -1) {
+      return [i, ...indexes];
     }
   }
-  return [];
+  return [-1];
 };
 
-const sumOfThree = (numbers: number[], target: number) => {
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = i + 1; j < numbers.length; j++) {
-      const missingNumber = target - numbers[i] - numbers[j];
-      if (numbers.indexOf(missingNumber, j) > -1) {
-        return [numbers[i], numbers[j], missingNumber];
-      }
-    }
-  }
-  return [];
+export const find = (numbers: number[], howMany: number, howMuch: number): number[] => {
+  return _find(numbers, 0, howMany, howMuch).map((i) => numbers[i]);
 };
 
 (async () => {
-  const input = await readFile(__dirname + "/input1.txt", { encoding: "utf8" });
+  const input = await readFile(__dirname + "/input.txt", { encoding: "utf8" });
   const numbers = input.split(/\r?\n/).map((x) => parseInt(x, 10));
-  const twoParts = sumOfTwo(numbers, 2020);
+  const twoParts = find(numbers, 2, 2020);
   console.log(twoParts.reduce((prev, curr) => prev * curr, 1));
-  const threeParts = sumOfThree(numbers, 2020);
+  const threeParts = find(numbers, 3, 2020);
   console.log(threeParts.reduce((prev, curr) => prev * curr, 1));
 })();

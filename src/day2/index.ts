@@ -33,7 +33,7 @@ class Entry {
 }
 
 (async () => {
-  const input = await readFile(__dirname + "/input1.txt", { encoding: "utf8" });
+  const input = await readFile(__dirname + "/input.txt", { encoding: "utf8" });
   const entries: Entry[] = input.split(/\r?\n/).map((x) => new Entry(x));
   console.log(entries.filter((e) => e.isValid1()).length);
   console.log(entries.filter((e) => e.isValid2()).length);
